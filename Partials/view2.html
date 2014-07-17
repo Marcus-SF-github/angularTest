@@ -2,11 +2,11 @@
 	<h2> view 2 </h2>
 	City:
 	<br/>
-	<input type="text" data-ng-model="city" />
+	<input type="text" data-ng-model="city.filter" />
 	<br/>
 	
 	<ul>
-		<li data-ng-repeat="cust in customers">{{cust.city}}</li>
+		<li data-ng-repeat="cust in customers | filter=city.filter">{{cust.city}}</li>
 	</ul>
 	
 	<br/><br/>
