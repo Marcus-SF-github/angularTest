@@ -4,7 +4,19 @@
 <script src="Scripts/angular.min.js"></script>
 <script src="Scripts/angular-route.min.js"></script>
 <script>
-	var demoApp = angular.module('demoApp123',['ngRoute']);
+	var demoApp = angular.module('demoApp123',['ngRoute'])
+		.factory('simpleFactory',function(){
+			var factory = {};
+			var customers = [
+				{name:'Marek Kosar', city:'Pezinok'},
+				{name:'Rado Priezvisko', city:'Sladkovicovo'},
+				{name:'Nick Obama', city:'Alabama'}
+			];
+			factory.getCustomers = function(){
+				return customers;
+			}
+			return factory;
+		});
 	
 	demoApp.config(['$routeProvider',
 		function ($routeProvider){
@@ -22,12 +34,8 @@
 				.otherwise({ redirectTo: '/'});
 	}]);
 		
-	demoApp.controller('simpleController',function($scope){
-		$scope.customers = [
-			{name:'Marek Kosar', city:'Pezinok'},
-			{name:'Rado Priezvisko', city:'Sladkovicovo'},
-			{name:'Nick Obama', city:'Alabama'}
-		];
+	demoApp.controller('simpleController',function($scope,simpleFactory){
+		$scope.customers = simpleFactory.getCustomers();
 		
 		$scope.addCustomer = function(){
 			$scope.customers.push({name: $scope.newCustomer.name, city: $scope.newCustomer.city });
