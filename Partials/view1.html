@@ -1,0 +1,20 @@
+<div class="container">
+	<h2> view 1 </h2>
+	Name:
+	<br/>
+	<input type="text" data-ng-model="filter.name" />
+	<br/>
+	
+	<ul>
+		<li data-ng-repeat="cust in customers | filter:filter.name">{{cust.name}}</li>
+	</ul>
+	
+	<br/><br/>
+	Customer Name:<br/>
+	<input type="text" data-ng-model="newCustomer.name" />
+	Customer City:<br/>
+	<input type="text" data-ng-model="newCustomer.city" />
+	<button data-ng-click="addCustomer()"> Add Customer </button>
+	
+	<a href="#/view2"> Go to view2 </a>
+</div>
